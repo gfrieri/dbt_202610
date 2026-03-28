@@ -11,4 +11,4 @@ SELECT
     payment_method AS metodo_pago,
     discount_amount AS monto_descuento,
     item_count AS cantidad
-FROM {{ source('raw_prueba_updated', 'raw_orders_updated') }}
+FROM {{ source('raw', 'raw_orders') }}

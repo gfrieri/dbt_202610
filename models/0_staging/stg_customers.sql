@@ -11,4 +11,4 @@ SELECT
     customer_tier AS nivel_cliente,
     created_at AS fecha_creacion,
     is_active AS activo
-FROM {{ source('raw_prueba', 'raw_customer_updated') }}
+FROM {{ source('raw', 'raw_customers') }}

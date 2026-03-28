@@ -1,7 +1,17 @@
 version: 2
 
 sources:
-  - name: raw_prueba
+  - name: raw
     tables:
-      - name: raw_customer_updated
-      - name: raw_orders_updated
+      - name: raw_customers
+      - name: raw_orders
+
+models:
+  - name: stg_orders
+    columns:
+      - name: id_pedido
+        tests:
+          - not_null
+          - unique
+          - no_negative_values:
+              column_name: id_pedido
