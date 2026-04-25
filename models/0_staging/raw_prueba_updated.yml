@@ -2,16 +2,19 @@ version: 2
 
 sources:
   - name: raw
+    freshness: 
+      error_after:
+        count: 5
+        period: day
+      warn_after:
+        count: 10
+        period: day
+    description: "Datos crudos provenientes de la 'base de datos'"
+    config:
+      meta:
+        owner: "Equipo de Datos"
+        team: "Ingenieros de Datos"
+        created_at: "2026-04-25"
     tables:
       - name: raw_customers
       - name: raw_orders
-
-models:
-  - name: stg_orders
-    columns:
-      - name: id_pedido
-        tests:
-          - not_null
-          - unique
-          - no_negative_values:
-              column_name: id_pedido

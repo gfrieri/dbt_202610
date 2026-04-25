@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Modelo de staging para la tabla de pedidos"
+    config:
+      meta:
+        owner: "Equipo de Datos"
+        team: "Ingenieros de Datos"
+        created_at: "2026-04-25"
+    columns:
+      - name: id_pedido
+        description: "Identificador único del pedido"
+        tests:
+          - not_null
+          - unique
+          - no_negative_values:
+              description: '{{ doc("no_negative_values") }}'
+              column_name: id_pedido
+
+
+  - name: stg_customers
+    description: "Modelo de staging para la tabla de clientes"
+    config:
+      meta:
+        owner: "Equipo de Datos"
+        team: "Ingenieros de Datos"
+        created_at: "2026-04-25"
+    columns:
+      - name: id_cliente
+        description: '{{ doc("id_cliente") }}'
+        tests:
+          - not_null
+          - unique
+          - no_negative_values:
+              description: '{{ doc("no_negative_values") }}'
+              column_name: id_cliente
+
+
+  - name: int_customer_by_country
+    description: "Modelo de intermediate que filtra clientes en CO"
+    config:
+      meta:
+        owner: "Equipo de Datos"
+        team: "Analistas de Datos"
+        created_at: "2026-04-25"
+    columns:
+      - name: id_cliente
+        description: '{{ doc("id_cliente") }}'
+        tests:
+          - not_null
+          - unique
+          - no_negative_values:
+              description: '{{ doc("no_negative_values") }}'
+              column_name: id_cliente
